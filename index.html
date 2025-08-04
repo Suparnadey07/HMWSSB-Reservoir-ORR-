@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="./resources/ol.css">
+        <link rel="stylesheet" href="resources/fontawesome-all.min.css">
+        <link rel="stylesheet" type="text/css" href="resources/horsey.min.css">
+        <link rel="stylesheet" type="text/css" href="resources/ol3-search-layer.min.css">
+        <link href="resources/ol-geocoder.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+        <link rel="stylesheet" href="./resources/qgis2web.css">
+        <style>
+         html, body {
+            background-color: #ffffff;
+        }
+        .ol-control > * {
+            background-color: #f8f8f8!important;
+            color: #444444!important;
+            border-radius: 0px;
+        }
+        .ol-attribution a, .gcd-gl-input::placeholder, .search-layer-input-search::placeholder {
+            color: #444444!important;
+        }
+        .search-layer-input-search {
+            background-color: #f8f8f8!important;
+        }
+        .ol-control > *:focus, .ol-control >*:hover {
+            background-color: rgba(248, 248, 248, 0.7)!important;
+        } 
+        .ol-control {
+            background-color: rgba(255,255,255,.4) !important;
+            padding: 2px !important;
+        } 
+
+        .popup-image-container {
+          position: relative;
+          margin: 10px auto;
+          max-width: 90%;         /* adapt to popup width */
+        }
+		
+		.image-viewport {
+          width: 100%;        /* adjust to your popup width */
+          height: 300px;       /* adjust to your popup height */
+          overflow: auto;    /* clips the zoomed image */
+          border: 1px solid #ccc; /* subtle border */
+          background: #fff
+        }
+
+       .zoomable-image {
+         display: block;
+         max-width: none;        /* allow grow beyond container */
+         transform-origin: center center;
+         transition: transform 0.2s ease-in-out;
+        }
+
+       .image-controls {
+         position: absolute;
+         top: 5px;
+         right: 5px;
+		 z-index: 5;
+         display: flex;
+         gap: 4px;
+         background: rgba(255, 255, 255, 0.8);
+         padding: 2px 4px;
+         border-radius: 3px;
+        }
+
+       .zoom-btn {
+         font-size: 14px;
+         padding: 2px 6px;
+         cursor: pointer;
+         border: none;
+         background: #007bff;
+         color: white;
+         border-radius: 3px;
+       }
+       .zoom-btn:hover {
+         background: #0056b3;
+        }
+        </style>
+
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        .ol-control {
+      margin-top: 60px !important; /* ✅ Add this here */
+    }
+        </style>
+        <title></title>
+    </head>
+    <!-- Full-width thin blue header with centered text -->
+<div style="
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #054d96; /* Dark Blue */
+  padding: 4px 0;            /* 🔽 Less vertical height */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  z-index: 1000;
+">
+  <h1 style="
+    color: white;
+    margin: 0;
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+  ">
+    HMWSSB RESERVOIRS - ORR
+  </h1>
+</div>
+
+<div id="map-abstract" style="
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  max-width: 300px;
+  background-color: rgba(185, 187, 189, 0.85); /* Blue background */
+  color: rgb(12, 10, 10);
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+">
+  <strong>Prepared by:</strong><br>
+ NCPE Infrastructure India (p) Ltd.
+</div>
+    <body>
+        <div id="map">
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                <div id="popup-content"></div>
+            </div>
+        </div>
+        <script src="resources/qgis2web_expressions.js"></script>
+        <script src="./resources/functions.js"></script>
+        <script src="./resources/ol.js"></script>
+        <script src="resources/horsey.min.js"></script>
+        <script src="resources/ol3-search-layer.js"></script>
+        <script src="./resources/ol-layerswitcher.js"></script>
+        <script src="resources/photon-geocoder-autocomplete.min.js"></script>
+        <script src="layers/Reservoir_2.js"></script><script src="layers/Reservoir_sources_3.js"></script><script src="layers/SectionBoundary_4.js"></script><script src="layers/DivisionBoundary_5.js"></script><script src="layers/CIRCLEBOUNDARY_6.js"></script><script src="layers/HUA_7.js"></script>
+        <script src="styles/Reservoir_2_style.js"></script><script src="styles/Reservoir_sources_3_style.js"></script><script src="styles/SectionBoundary_4_style.js"></script><script src="styles/DivisionBoundary_5_style.js"></script><script src="styles/CIRCLEBOUNDARY_6_style.js"></script><script src="styles/HUA_7_style.js"></script>
+        <script src="./layers/layers.js" type="text/javascript"></script> 
+        <script src="./resources/Autolinker.min.js"></script>
+        <script src="./resources/qgis2web.js"></script>
+    </body>
+</html>
